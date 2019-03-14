@@ -2,17 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Results = ({ data }) => (
-  <ul className="list-group">
+  <div className="container-home">
     { data.map(item => (
-      <li
-        key={item.id}
-        className="list-group-item"
-      >
-        <Link className="nav-link posts font-weight-bold" to={`/details/${item.id}`}>{`${item.title}`}</Link>
-        <p className="nav-link posts">{`${item.dateStart}`}</p>
-      </li>
+      <div className="container-classes" key={item.id}>
+        <h2 className="nav-link posts">{`${item.entitled}`}</h2>
+        <Link className="btn btn-default" to={`/details/${item.id}`}>Click ME</Link>
+      </div>
     ))}
-  </ul>
+  </div>
 )
 
 export default Results

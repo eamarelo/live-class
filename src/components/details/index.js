@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Details extends Component {
   constructor(props) {
@@ -28,8 +29,10 @@ class Details extends Component {
     console.log('dataaaaaaaaaaaaRender', data)
     return (
       <div>
+        <h2>{`${data.entitled}`}</h2>
         <li key={data.id}>
           <p className="nav-link posts">{`${data.entitled}`}</p>
+          <Link className="btn btn-default" to={`/editor/${data.id}`}>Voir le cours</Link>
         </li>
       </div>
     )

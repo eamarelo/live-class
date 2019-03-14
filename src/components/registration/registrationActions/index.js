@@ -27,7 +27,8 @@ export function userSignupRequest(user) {
   return new Promise((resolve, reject) => {
     axios.post('https://localhost:3000/auth/register/', user)
       .then((response) => {
-        store.dispatch(userRegister(response.config.data))
+        console.log('response---------------------------------------', response.data)
+        store.dispatch(userRegister(response.data.id))
         // Succes de la requête en envoyant ce qu'on veut
         resolve(response.config.data)
       }, (err) => {
@@ -53,6 +54,7 @@ const userExists = isUserExist => ({
   */
 export function isUserExists(identifier) {
   return new Promise((resolve) => {
+    console.log('---------------identifier---------------', identifier)
     axios.get(`https://localhost:3000/user/show/${identifier}`)
       .then((response) => {
         // dispatch méthode

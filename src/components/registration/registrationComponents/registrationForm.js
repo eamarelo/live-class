@@ -65,7 +65,7 @@ class SignUpForm extends Component {
     const { errors } = this.state
 
     const val = e.target.value
-    const field = e.target.name
+    const field = e.target.email
 
     if (val !== '') {
       isUserExists(val).then((res) => {
@@ -124,7 +124,6 @@ class SignUpForm extends Component {
               error={errors.lastname}
               label="lastname"
               onChange={this.onChange}
-              checkUserExists={this.checkUserExists}
               value={lastname}
               field="lastname"
             />
@@ -133,7 +132,6 @@ class SignUpForm extends Component {
               error={errors.firstname}
               label="firstname"
               onChange={this.onChange}
-              checkUserExists={this.checkUserExists}
               value={firstname}
               field="firstname"
             />
@@ -142,7 +140,6 @@ class SignUpForm extends Component {
               error={errors.birthday}
               label="birthday"
               onChange={this.onChange}
-              checkUserExists={this.checkUserExists}
               value={birthday}
               field="birthday"
             />
@@ -151,7 +148,6 @@ class SignUpForm extends Component {
               error={errors.Address}
               label="Address"
               onChange={this.onChange}
-              checkUserExists={this.checkUserExists}
               value={Address}
               field="Address"
             />
@@ -187,7 +183,6 @@ class SignUpForm extends Component {
               error={errors.role}
               label="role"
               onChange={this.onChange}
-              checkUserExists={this.checkUserExists}
               value={role}
               field="role"
             />

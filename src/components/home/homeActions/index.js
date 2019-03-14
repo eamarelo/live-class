@@ -2,36 +2,35 @@ import axios from 'axios'
 
 import actionsType from './actions-type'
 import store from '../../../store'
-import mock from '../../../mock/mock.json'
 
 /**
  * Format events
  * @param {Array} events
  * @return {Array} eventsFormatted
  */
-const formatEvents = events => (
-  events.map(event => ({
-    id: event.recordid,
-    address: event.fields.address,
-    city: event.fields.city,
-    dateEnd: event.fields.date_end,
-    dateStart: event.fields.date_start,
-    description: event.fields.description,
-    image: event.fields.image,
-    title: event.fields.title
+const formatLessons = lessons => (
+  lessons.map(lesson => ({
+    id: lesson.id,
+    entitled: lesson.entitled,
+    author: lesson.author,
+    description: lesson.description,
+    mode: lesson.mode,
+    theme: lesson.theme
   }))
 )
-
-const getLastEvents = events => ({
+const getLastLesson = lessons => ({
   type: actionsType.GET_LAST_EVENTS,
-  data: formatEvents(events)
+  data: formatLessons(lessons)
 })
 
 export const getEventsData = () => {
-  const apiUrl = 'https://opendata.paris.fr/api/records/1.0/search/?dataset=evenements-a-paris&facet=placename&facet=department&facet=region&facet=city&facet=date_start&facet=date_end&facet=pricing_info&sort=date_start'
+  const apiUrl = 'http://localhost:3000/class/get'
   axios.get(apiUrl).then((response) => {
-    store.dispatch(getLastEvents(response.records))
-  }).catch(() => {
-    store.dispatch(getLastEvents(mock.records))
+    console.log(response, 'elies')
+    store.dispatch(getLastLesson(response.data))
+    console.log('deeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', store)
+  }).catch((error) => {
+    console.log(error)
+    console.log('recordmocj')
   })
 }
