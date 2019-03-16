@@ -27,7 +27,8 @@ class Editor extends Component {
 
   getData() {
     const { match } = this.props
-    const apiUrl = `http://localhost:3000/class/get${match.url}`
+    console.log(this.state)
+    const apiUrl = `http://localhost:3000/class/get/details/${match.url}`
     axios.get(apiUrl)
       .then((response) => {
         console.log('responseeeeeeeeeeeeeeeeeeee', response.data)

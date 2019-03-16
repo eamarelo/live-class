@@ -17,11 +17,11 @@ class Routes extends Component {
           <div>
             <Header />
             <Switch>
-              <Route path="/" component={Editor} exact />
+              <Route path="/" component={Home} exact />
               <Route path="/login" component={Login} exact />
               <Route path="/registration" component={Registration} exact />
-              <Route path="/home" component={Home} exact />
               <Route path="/details/:id" component={Details} exact />
+              <Route path="/editor/:id" component={Editor} exact />
             </Switch>
             <Footer />
           </div>
